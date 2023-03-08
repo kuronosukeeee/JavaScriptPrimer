@@ -103,3 +103,31 @@ const valueA = true ? "A" : "B";
 console.log(valueA);
 const valueB = false ? "A" : "B";
 console.log(valueB);
+
+// 暗黙的な型変換とif文（falsyな値→falseへ暗黙的に変換）
+let z;
+if (!z) {
+  console.log("falsyな値なら表示", z)
+}
+// 明示的な型変換を行うことももちろん可能
+let zz;
+if (zz === undefined) {
+  console.log("undefinedなら表示", zz);
+}
+
+// 文字列→数値への変換
+// const input = window.prompt("数字を入力してください", "42");
+// const num = Number(input);
+// console.log(typeof num);
+// console.log(num);
+
+// Number.parseInt/.parseFloatで余計な文字を無視して数値のみ取り出す
+console.log(Number.parseInt("100px", 10));
+console.log(Number.parseFloat("42.5px"));
+
+// NaN（Not a Number）の判定→isNaN
+const userInput = "任意の文字列";
+const num = Number.parseInt(userInput, 10);
+if (Number.isNaN(num)) {
+  console.log("パースした結果NaNになった", num);
+}
