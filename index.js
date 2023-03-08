@@ -131,3 +131,55 @@ const num = Number.parseInt(userInput, 10);
 if (Number.isNaN(num)) {
   console.log("パースした結果NaNになった", num);
 }
+
+// 関数は実引数の個数が足りなくても問題なく呼び出せる
+// その場合足りない引数にはundefinedが代入されて渡される
+function argumentsToArray (xx, yy) {
+  return [xx, yy];
+}
+console.log(argumentsToArray(1, 2));
+console.log(argumentsToArray(1));
+// デフォルト値を指定することも可能
+function echo (zz = "デフォルト値") {
+  return zz;
+}
+console.log(echo("実引数を表示する関数"));
+console.log(echo());
+// 実引数の個数が多い場合も問題なく実行される
+// あふれた部分は無視される
+console.log(echo("実引数1","実引数2"));
+
+// 可変長引数を受け取るには仮引数の前にRest parameters（...）をつける
+function fn (...args) {
+  console.log(args);
+}
+fn("a", "b", "c");
+// 通常の仮引数とRest parametersを組み合わせて定義することも可能
+// その場合はRest parametersを末尾の仮引数にする必要がある
+function fn2(arg1, ...restArgs) {
+  console.log(arg1);
+  console.log(restArgs);
+}
+fn2("a", "b", "c");
+
+// Spread構文（配列の値を展開して関数の各仮引数に代入する）
+function fn3(x, y, z) {
+  console.log(x);
+  console.log(y);
+  console.log(z);
+}
+const arr = [1, 2, 3];
+fn3(...arr);
+
+// arguments（Array-likeなオブジェクト）の利用
+// 関数の中でのみ使える特殊な変数（仮引数は空でok）
+// Array-likeとは配列のようにインデックスで要素にアクセスできるという意味
+// ただし実際には配列ではないためArrayメソッドは利用できない点に注意
+// Rest parametersが利用できる環境ではRest parametersを利用するべき
+// →仮引数を見て可変長引数を受け付ける関数かどうかがわからないため
+function fn4() {
+  console.log(arguments[0]);
+  console.log(arguments[1]);
+  console.log(arguments[2]);
+}
+fn4("a", "b", "c");
