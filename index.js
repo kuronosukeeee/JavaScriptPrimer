@@ -2,7 +2,9 @@
 console.log(1);
 console.log(1 + 1);
 
-// constは定数ではない
+// constは再代入できない変数（定数ではない）
+// letはカウンター変数などで使用する（基本的にはconst）
+// varは後方互換性のために残された負の遺産（基本的には使わない）
 const total = 42 + 42;
 console.log(total);
 console.log("JavaScript");
@@ -45,3 +47,59 @@ const str = new String("文字列");
 console.log(typeof str);
 console.log(str.length);
 
+// プリミティブ型のデータに参照する方法
+const str2 = "文字列";
+console.log(typeof str2);
+console.log(str2.length);
+
+// べき乗演算子と同じ動きをするメソッド
+console.log(2 ** 4);
+console.log(Math.pow(2, 4));
+
+// 後置インクリメント演算子の動き（）
+let x = 1;
+console.log(x++);
+console.log(x);
+
+// 前値インクリメント演算子の動き（変数を+1→評価結果を返す）
+let y = 1;
+console.log(++y);
+console.log(y);
+
+// 比較は型を揃えてから厳密等価演算子を使う
+// 等価演算子は暗黙的な型変換が行われたのちに比較するため挙動が不安定
+// 例外的にnullもしくはundefinedとの比較を行う際は等価演算子を使用する
+
+// ビット演算もできる（シフト演算など）
+
+// 論理演算時に暗黙的な型変換でfalseに変換される値（falsyな値）一覧
+// false/undefined/null/0/0n/NaN/""（これ以外は全てtrueに変換される）
+
+// AND演算時は左辺の評価がtrueの場合右辺の評価結果を返す
+console.log("文字列" && "右辺の値");
+console.log(42 && "右辺の値");
+// 左辺がfalsyなので評価結果として左辺を返す（短絡評価）
+console.log(false && "右辺の値");
+console.log(0 && "右辺の値");
+console.log(NaN && "右辺の値");
+
+// Nullish coalescing演算子（??）
+// 左辺の値がnullishであれば右辺の評価結果を返す
+// nullish＝nullまたはundefined
+console.log(null ?? "右辺の値");
+console.log(undefined ?? "右辺の値");
+// 左辺がnullishではないため評価結果として左辺を返す
+console.log(true ?? "右辺の値");
+console.log(0 ?? "右辺の値");
+console.log("文字列" ?? "右辺の値");
+// 変数への代入時に使用されることを想定している
+// OR演算子（左辺がfalseの場合は右辺を評価）はfalsyな値が左辺に来る場合に使用できなかった
+const inputValue = 0
+const nullishValue = inputValue ?? 42;
+console.log(nullishValue);
+
+// 三項演算子（条件式？trueの時に処理する式：falseの時に処理する式）
+const valueA = true ? "A" : "B";
+console.log(valueA);
+const valueB = false ? "A" : "B";
+console.log(valueB);
