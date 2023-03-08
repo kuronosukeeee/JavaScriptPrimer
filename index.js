@@ -183,3 +183,4 @@ function fn4() {
   console.log(arguments[2]);
 }
 fn4("a", "b", "c");
+
