@@ -208,10 +208,28 @@ function fn5() {
 const myFunc = fn5;
 myFunc();
 // 最初から変数の値として関数を定義することも可能（＝関数式）
-// その場合は関数名は不要
+// その場合は関数名は不要（＝匿名関数or無名関数）
+// →関数式の関数に名前をつけても外から呼び出すことはできないから
+// ただし、関数式の定義の中で再起的に呼び出したい場合は名前をつけることがある
 const myFunc2 = function() {
   return 1 + 1;
 }
 console.log(myFunc2());
-
-
+// 関数式において、Arrow Fnctionを使用すればfunctionキーワードを省略できる
+const myFunc3 = () => {
+  return 1 + 1;
+}
+console.log(myFunc3());
+// また、仮引数が一つのみの時は()を省略することができる
+const myFunc4 = myFunc4Arg => {
+  return myFunc4Arg + myFunc4Arg;
+}
+console.log(myFunc4(2))
+// さらに、関数の処理が一つの場合はブロック{}とreturn省略できる
+const myFunc5 = myFunc5Arg  => myFunc5Arg + myFunc5Arg;
+console.log(myFunc5(2))
+//  Arrow Functionには以下の制約がある
+// ・常に匿名関数
+// ・newできない（＝コンストラクタ関数ではない）
+// ・arguments変数を参照できない（しかしそもそも使用は非推奨）
+// しかし、Arrow Functionで問題ない場合は、様々な観点からメリットがあるためこちらの使用が推奨されている
