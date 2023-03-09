@@ -184,3 +184,34 @@ function fn4() {
 }
 fn4("a", "b", "c");
 
+// 分割代入
+// ①オブジェクト
+function printUserId({id}) {
+  console.log(id);
+}
+const user = {
+  id:42
+};
+printUserId(user);
+// ②配列
+function print([first, second]) {
+  console.log(first);
+  console.log(second);
+}
+const arrayForPrint = [1, 2];
+print(arrayForPrint); 
+
+// 関数は変数に代入することができる（＝ファーストクラスファンクション（第一級関数））
+function fn5() {
+  console.log("fn5が呼び出されました");
+}
+const myFunc = fn5;
+myFunc();
+// 最初から変数の値として関数を定義することも可能（＝関数式）
+// その場合は関数名は不要
+const myFunc2 = function() {
+  return 1 + 1;
+}
+console.log(myFunc2());
+
+
