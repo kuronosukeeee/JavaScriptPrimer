@@ -233,3 +233,32 @@ console.log(myFunc5(2))
 // ・newできない（＝コンストラクタ関数ではない）
 // ・arguments変数を参照できない（しかしそもそも使用は非推奨）
 // しかし、Arrow Functionで問題ない場合は、様々な観点からメリットがあるためこちらの使用が推奨されている
+
+// オーバーロード（多重定義）は存在しない
+// 関数名のみで区別されるため、引数の個数が違ったとしても上書きされる
+
+// 関数は他の関数の引数として渡すことができる（コールバック関数）
+// コールバック関数を受け取る関数のことを高階関数という
+const arr2 = [1, 2, 3];
+const output = (value) => {
+  console.log(value);
+};
+array.forEach(output);
+// ここではforEachが高階関数、outputがコールバック関数となる
+
+// メソッドの定義はオブジェクト内で行う
+const myObj = {
+  method1: function() {
+    return "method1";
+  },
+  method2: () => "method2"
+};
+console.log(myObj.method1());
+console.log(myObj.method2());
+// 推奨：短縮記法（クラスメソッドの記法と統一された）
+const myObj2 = {
+  method1() {
+    return "method1";
+  }
+};
+console.log(myObj.method1());
