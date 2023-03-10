@@ -262,3 +262,47 @@ const myObj2 = {
   }
 };
 console.log(myObj.method1());
+
+// if文のネスト（今年が閏年かどうかの判定）
+const year = new Date().getFullYear();
+if (year % 4 === 0) {
+  if (year % 100 === 0) {
+    if (year % 400 === 0) {
+      console.log(`${year}年は閏年です`);
+    } else {
+      console.log(`${year}年は閏年ではありません`);
+    }
+  } else {
+    console.log(`${year}年は閏年です`);
+  }
+} else {
+  console.log(`${year}年は閏年ではありません`);
+}
+// ネストせずに書く方法
+if (year % 400 === 0) {
+  console.log(`${year}年は閏年です`);
+} else if (year % 100 === 0) {
+  console.log(`${year}年は閏年ではありません`);
+} else if (year % 4 === 0) {
+  console.log(`${year}年は閏年です`);
+} else {
+  console.log(`${year}年は閏年ではありません`);
+}
+
+// Switch文
+// 関数と組みわせて条件に対する値を返すパターンとして使うことが多い
+const version = "ES6";
+switch (version) {
+  case "ES5":
+    console.log("ECMAScript 5");
+    break;
+  case "ES6":
+    console.log("ECMAScript 2015");
+    break;
+  case "ES7":
+    console.log("ECMAScript 2016");
+    break;
+  default:
+    console.log("知らないバージョンです");
+    break;
+}
