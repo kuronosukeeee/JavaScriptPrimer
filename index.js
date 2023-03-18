@@ -306,3 +306,37 @@ switch (version) {
     console.log("知らないバージョンです");
     break;
 }
+
+// while文
+let whileTest = 0;
+console.log(`ループ開始前の変数の値は${whileTest}`);
+while (whileTest < 10) {
+  console.log (whileTest);
+  whileTest++;
+}
+console.log (`現在の変数の値は${whileTest}`);
+// do while文
+const doWhileTest = 1000;
+do {
+  console.log(doWhileTest);
+}
+while(doWhileTest < 10);
+
+// for文と関数
+function ForSum(numbers) {
+  let total = 0;
+  for (let i = 0; i < numbers.length; i++) {
+    total += numbers[i];
+  }
+  return total;
+}
+console.log(ForSum([1, 2, 3, 4, 5]));
+
+// 配列のforEachメソッドと関数
+function ForEachSum(forEachArr) {
+  let total = 0;
+  forEachArr.forEach(num => {total += num})
+  return total;
+}
+console.log(ForEachSum([1,2,3,4,5]));
+
